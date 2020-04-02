@@ -77,7 +77,7 @@ void Decrypt() {
 
 DWORD DecryptCIndex(DWORD value)
 {
-	return __ROL4__(value ^ 0x286953BD, 0x7) ^ (__ROL4__(value ^ 0x286953BD, 0x7) << 0x10) ^ 0xCBB9628D;
+	return __ROL4__(value ^ 0x901F2C5B, 2) ^ (__ROL4__(value ^ 0x901F2C5B, 2) << 16) ^ 0xC2A90BFF;
 }
 
 std::string GetGNamesByObjID(int32_t ObjectID)
