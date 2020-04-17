@@ -75,11 +75,6 @@ void Decrypt() {
 	RtlCopyMemory((LPVOID)fnDecryptFunctoin, (LPVOID)ShellcodeBuff, sizeof(ShellcodeBuff));
 }
 
-DWORD DecryptCIndex(DWORD value)
-{
-	return _rotl(value ^ 0x5A66C079, 0xC) ^ (_rotl(value ^ 0x5A66C079, 0xC) << 0x10) ^ 0xD53CD882;
-}
-
 std::string GetGNamesByObjID(int32_t ObjectID)
 {
 	int64_t fNamePtr = read<uint64_t>(DriverHandle, processID, GNamesAddress + int(ObjectID / offs_chunk) * 0x8);
