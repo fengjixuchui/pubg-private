@@ -93,7 +93,7 @@ DWORD_PTR AnimScript;
 #define offs_Mesh					  0x4C8 //48 8B 99 ? ? ? ? 48 ? ? 48 ? ? 0F 84 ? ? ? ? 0F 10
 #define offs_Mesh_BoneArray		      0xAC0 //F3 0F 10 81 ?? ?? ?? ?? F3 0F 10 0D ?? ?? ?? ?? 0F 2F C1
 #define offs_Mesh_ComponentToWorld    0x2C0 //0F 8D ? ? ? ? 0F 10 9F ? ? ? ?
-#define offs_relativepos			  0x364
+#define offs_relativepos			  0x23C
 #define offs_absolutepos			  offs_Mesh_ComponentToWorld + 0x10 //48 85 C0 74 23 0F 10 88 ?? ?? 00 00 0F 28 C1
 #define offs_CameraRotation		      0x1C80 //f2 0f 10 81 ? ? ? ? f2 41 0f 11 ? 8b 81 ? ? ? ? 41 89 ? ? c3
 #define offs_CameraLocation		      0x1C90 //E8 ? ? ? ? 44 8B 8F ? ? ? ? 0F 28 D6
