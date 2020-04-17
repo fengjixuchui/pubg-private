@@ -159,6 +159,7 @@ int main()
 	CreateThread(NULL, NULL, Menuthread, NULL, NULL, NULL);
 
 #ifdef DEBUG
+	GNamesAddress = DecryptData(read<DWORD_PTR>(DriverHandle, processID, DecryptData(read<DWORD_PTR>(DriverHandle, processID, base_address + offs_gnames - 0x20))));
 	printf(_xor_("Gnames: %p.\n").c_str(), (void*)GNamesAddress);
 
 	uint64_t pUWorld = DecryptData(read<uint64_t>(DriverHandle, processID, base_address + offs_uworld));
@@ -173,7 +174,10 @@ int main()
 	int32_t ActorCount = read<uint32_t>(DriverHandle, processID, ActorsArray + 0x8);
 	printf(_xor_("ActorCount: %p.\n").c_str(), (void*)ActorCount);
 
-	localplayer = read<uint64_t>(DriverHandle, processID, base_address + offs_localplayer);
+	DWORD_PTR GameInstance = DecryptData(read<DWORD_PTR>(DriverHandle, processID, Uworld + offs_GameInstance));
+	printf(_xor_("GameInstance: %p.\n").c_str(), (void*)GameInstance);
+	
+	localplayer = DecryptData(read<DWORD_PTR>(DriverHandle, processID, read<DWORD_PTR>(DriverHandle, processID, GameInstance + offs_localplayer)));
 	printf(_xor_("Localplayer: %p.\n").c_str(), (void*)localplayer);
 
 	PlayerController = DecryptData(read<DWORD_PTR>(DriverHandle, processID, localplayer + offs_PlayerControllers));
@@ -924,7 +928,8 @@ void UpdateAddress()
 {
 	Uworld = DecryptData(read<DWORD_PTR>(DriverHandle, processID, base_address + offs_uworld));
 	Ulevel = DecryptData(read<DWORD_PTR>(DriverHandle, processID, Uworld + offs_PersistentLevel));
-	localplayer = read<DWORD_PTR>(DriverHandle, processID, base_address + offs_localplayer);
+	DWORD_PTR GameInstance = DecryptData(read<DWORD_PTR>(DriverHandle, processID, Uworld + offs_GameInstance));
+	localplayer = DecryptData(read<DWORD_PTR>(DriverHandle, processID, read<DWORD_PTR>(DriverHandle, processID, GameInstance + offs_localplayer)));
 	PlayerController = DecryptData(read<DWORD_PTR>(DriverHandle, processID, localplayer + offs_PlayerControllers));
 	GNamesAddress = DecryptData(read<DWORD_PTR>(DriverHandle, processID, DecryptData(read<DWORD_PTR>(DriverHandle, processID, base_address + offs_gnames - 0x20))));
 }
