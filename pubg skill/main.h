@@ -74,47 +74,53 @@ DWORD_PTR PlayerController;
 DWORD_PTR PlayerCameraManager;
 DWORD_PTR AnimScript;
 
-#define offs_uworld 0x72CB368 //48 89 05 ? ? ? ? 48 83 C4 28 C3 B8 ? ? ? ? 48 C7 44 24 ? ? ? ? ? 66 C1 C8 08
-#define offs_localplayer 0x728C0D0 //48 89 3d ? ? ? ? f2 0f 10 05 ? ? ? ?
-#define offs_gnames 0x726FA38
-#define offs_decrypt 0x4EDEA28
-#define offs_chunk 0x3FC0 //c1 ? ? 8b ? c1 ? 1f 03 ? 69 ? ? ? ? ? 44 2b f8
+#define offs_uworld 0x760E5B8 //48 89 05 ? ? ? ? 48 83 C4 28 C3 B8 ? ? ? ? 48 C7 44 24 ? ? ? ? ? 66 C1 C8 08
+#define offs_gnames 0x773EAF0
+#define offs_decrypt 0x5A22428
+#define offs_chunk 0x40CC //c1 ? ? 8b ? c1 ? 1f 03 ? 69 ? ? ? ? ? 44 2b f8
 
-#define offs_PersistentLevel          0x40 //E8 ? ? ? ? 39 5C 24 48 
-#define offs_ActorsArray              0x98 //E8 ? ? ? ? 39 5C 24 48 7E 29
-#define offs_PlayerControllers        0x38
-#define Offs_LocalPawn				  0x480 //8B 90 ? ? ? ? C1 EA 04 41 84 D4
+#define offs_localplayer			  0x40 
+#define offs_GameInstance			  0x898	  
+#define offs_PersistentLevel          0x8B8 //E8 ? ? ? ? 39 5C 24 48 
+#define offs_ActorsArray              0x118 //E8 ? ? ? ? 39 5C 24 48 7E 29
+#define offs_PlayerControllers        0x30
+#define Offs_LocalPawn				  0x430 //8B 90 ? ? ? ? C1 EA 04 41 84 D4
 #define offs_PlayerCameraManager      0x4A0 //41 ff 90 ? ? ? ? ? 8b ? ? ? ? ? 48 85 c9 74 ? 48 8b 01 4c 8d
-#define offs_Actor_ObjID			  0x8
-#define offs_Actor_Health			  0xC6C //0F 57 C0 0F 2F 81 ? ? ? ? 72 0C
-#define offs_Actor_RootComponent	  0x298 //E8 ? ? ? ? B0 01 48 8B 4D 00 
-#define offs_Actor_TeamNumber		  0xFB8
-#define offs_Mesh					  0x4C0 //48 8B 99 ? ? ? ? 48 ? ? 48 ? ? 0F 84 ? ? ? ? 0F 10
-#define offs_Mesh_BoneArray		      0xAD0 //F3 0F 10 81 ?? ?? ?? ?? F3 0F 10 0D ?? ?? ?? ?? 0F 2F C1
-#define offs_Mesh_ComponentToWorld    0x340 //0F 8D ? ? ? ? 0F 10 9F ? ? ? ?
+#define offs_Actor_ObjID			  0x18
+#define offs_Actor_Health			  0x10D8 //0F 57 C0 0F 2F 81 ? ? ? ? 72 0C
+#define offs_Actor_RootComponent	  0x360 //E8 ? ? ? ? B0 01 48 8B 4D 00 
+#define offs_Actor_TeamNumber		  0x16E8
+#define offs_Mesh					  0x4C8 //48 8B 99 ? ? ? ? 48 ? ? 48 ? ? 0F 84 ? ? ? ? 0F 10
+#define offs_Mesh_BoneArray		      0xAC0 //F3 0F 10 81 ?? ?? ?? ?? F3 0F 10 0D ?? ?? ?? ?? 0F 2F C1
+#define offs_Mesh_ComponentToWorld    0x2C0 //0F 8D ? ? ? ? 0F 10 9F ? ? ? ?
 #define offs_relativepos			  0x364
-#define offs_absolutepos			  0x350 //48 85 C0 74 23 0F 10 88 ?? ?? 00 00 0F 28 C1
-#define offs_CameraRotation		      0xA10 //f2 0f 10 81 ? ? ? ? f2 41 0f 11 ? 8b 81 ? ? ? ? 41 89 ? ? c3
-#define offs_CameraLocation		      0xF94 //E8 ? ? ? ? 44 8B 8F ? ? ? ? 0F 28 D6
-#define offs_CameraFov			      0xA04 //77 08 F3 0F 10 81 ? ? ? ? C3 CC CC CC CC CC CC CC 48 89 5C 24 ?
-#define offs_UANIMINSTANCE			  0xC78
-#define offs_CONTROL_ROTATION_CP      0x6A8
+#define offs_absolutepos			  offs_Mesh_ComponentToWorld + 0x10 //48 85 C0 74 23 0F 10 88 ?? ?? 00 00 0F 28 C1
+#define offs_CameraRotation		      0x1C80 //f2 0f 10 81 ? ? ? ? f2 41 0f 11 ? 8b 81 ? ? ? ? 41 89 ? ? c3
+#define offs_CameraLocation		      0x1C90 //E8 ? ? ? ? 44 8B 8F ? ? ? ? 0F 28 D6
+#define offs_CameraFov			      0x1CAC //77 08 F3 0F 10 81 ? ? ? ? C3 CC CC CC CC CC CC CC 48 89 5C 24 ?
+#define offs_UANIMINSTANCE			  0xC68
+#define offs_CONTROL_ROTATION_CP      0x6A0
 #define offs_RECOIL_ADS_ROTATION_CP   0xB48
-#define offs_LastRenderTimeOnScreen   0x778 //0F 2F 83 ? ? ? ? 0F 42 C8
+#define offs_LastRenderTimeOnScreen   0x768 //0F 2F 83 ? ? ? ? 0F 42 C8
 
 //items
-#define offs_DroppedItem              0x1F0
+#define offs_DroppedItem              0x168
 #define offs_DroppedItemGroup_Count offs_DroppedItem + 0x8
-#define offs_DroppedItemGroup_UItem   0x660 //0F B6 F8 48 85 D2 74 13 4C 8B CE 4C 8B C5 49 8B CE ? ? ? ? ? ? ? ? ? ? ? ? ? ? ?
-#define offs_UITEM_ID				  0x270
+#define offs_DroppedItemGroup_UItem   0x650 //0F B6 F8 48 85 D2 74 13 4C 8B CE 4C 8B C5 49 8B CE ? ? ? ? ? ? ? ? ? ? ? ? ? ? ?
+#define offs_UITEM_ID				  0x268
 #define offs_ITEM_PACKAGE             0x520 //48 8B 8F ? ? ? ? 48 63 D3 48 8B 14 D1 48
 
 //prediction
-#define offs_WEAPONPROCESSOR 0x1630
-#define offs_EquippedWeapons 0x2B8
+#define offs_WEAPONPROCESSOR 0x1718
+#define offs_EquippedWeapons 0x2A8
 #define offs_WEAPONTRAJECTORYDATA 0xED0
-#define offs_TRAJECTORYCONFIG 0xB8
-#define offs_COMPONENT_VELOCITY 0x308
+#define offs_TRAJECTORYCONFIG 0xB0
+#define offs_COMPONENT_VELOCITY 0x2F0
+
+DWORD DecryptCIndex(DWORD value)
+{
+	return _rotr(value ^ 0xAED331C4, 0xF) ^ (_rotr(value ^ 0xAED331C4, 0xF) << 0x10) ^ 0x9382001E;
+}
 
 static const char* aimkeys[]
 {
